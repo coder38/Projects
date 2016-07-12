@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Enter Game</title>
+</head>
+<body bgcolor="#A4A4A4">
+<h2>
+<center> 
+
+<form method="post" action = "enterGame.php">
+<br>Enter game details <br><br><br>
+
+<table border="5" cellpadding="10" cellspacing="5">
+	<tr><td> ASIN:</td> <td><input type="text"  name="t1"></td></tr>
+	<tr><td> Title:</td> <td><input type="text" name="t2"></td></tr>	
+	<tr><td> Price:</td> <td><input type="text" name="t3"></td></tr>		
+	<tr><td> Quantity:</td> <td><input type="text"  name="t4"></td></tr>
+</table>
+
+<br><br>
+<input type="submit" size="20" name ="submit" value="SUBMIT" ><br>	<br>
+<input type="reset"  value="RESET" >
+</form>
+
+<form method="post" action="index.html">
+<input type = "submit"  name = "act" value = "Logout"/>
+</form>
+
+<form method="post" action="display_source.php">
+<input type = "submit"  name = "act" value = "Display Source"/>
+<input type = "hidden"  name = "interface" value = "13"/>
+
+</form>
+</center>
+</body>
+</html>
