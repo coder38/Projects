@@ -1,0 +1,70 @@
+<?php
+$password= "database";
+$username = "kdaley";
+$database = "kdaley";
+$host     = "mysqldev.aero.und.edu";
+
+
+
+
+$conn     = mysql_connect( $host, $username, $password );
+
+if ($_COOKIE["user"] =="")
+{
+	echo "<script> <form  method='post' action='http://people.aero.und.edu/~abhatia/database/remote.php'> 
+		alert('Time Out')</form></script>" ;
+	
+}
+
+if ( $_POST['act'] == "Make an Appointment" ) 
+{
+	if ( !$conn )
+		die( 'Could not connect: ' . mysql_error( ) );
+	else
+	{
+		mysql_select_db( $database, $conn );
+ 		$sql= "select unique specialization from doctor";
+		$result = mysql_query( $sql, $conn );
+		echo "<h2><center> Select the specialist you need to consult<h2>"; 
+		#$row = mysql_fetch_array( $result ) ;
+		echo "<form  method='post' action='http://people.aero.und.edu/~abhatia/database/employee.php'  >";
+		echo "<table align='center'> ";
+		while( $row = mysql_fetch_array( $result ) )
+		{
+				//echo " <option value='".$row[0]."'>".$row[0]."</option>";	
+				echo "<tr><td> <input type='radio' name='r' value='".$row[1]."'></td></tr>";
+		}
+		
+		echo " <tr><td>Sur Name</td><td> <input name='lname' type='text' value='".$row2[2]."'></td></tr>";	
+		echo " <tr><td>Sex </td><td> ".$row2[3]."</td></tr>";	
+		echo " <tr><td>Address </td><td> <input name='address' type='text' value='".$row2[4]."'></td></tr>";	
+		echo " <tr><td>Phone  </td><td> <input name='phone' type='tel' value='".$row2[5]."'></td></tr>";	
+		echo " <tr><td>Email </td><td> <input name='email' type='email' value='".$row2[6]."'></td></tr>";	
+		echo " <tr><td>D.O.B.</td><td> ".$row2[7]."</td></tr>";	
+		//echo " <tr><td>Password</td><td> <input name='pwd2' type='password' value='".$row2[8]."'></td></tr>";	
+		echo " <tr><td>Specialization </td><td> ".$row2[8]."</td></tr>";	
+		echo "<tr></tr>";		
+		echo "<tr><td>  <input type='submit' name='act' value='Update' style='width:100;background:#cc300;border:0;color:#2fff00' > </td> </tr>";		
+		echo "</table> </form>";
+		//echo "<button onClick='window.open('jsphp.php?jsVar=Hello World!')'>Send JavaScript to PHP</button> ";
+		sql_free_result($result2);
+
+		
+$sql = "insert into patient values('".$id_reg."','".$fName."','".$sName."', '".$sex."','".$address."','".$phone."','".$email."','".$dob."' );";	
+		$question = trim( $_POST["question"]);
+		$answer = trim( $_POST["answer"]);
+		$result = mysql_query( $sql, $conn );
+		$sql = "insert into manages_login_ac values('".$id_reg."','".crypt($pwd,$LOCK)."','0','0','".$question."','".crypt($answer,$LOCK)."');";
+                $result = mysql_query( $sql, $conn );
+                $row = mysql_fetch_array( $result ) ;
+
+		echo "<script> alert('Congratulation You are registered')</script>" ;
+	//	$row = mysql_fetch_array( $result ) ;
+        header("Refresh:0; url=http://people.aero.und.edu/~abhatia/database/index.html ");
+		msql_free_result($result);
+		msql_close($conn);
+	}
+
+}
+
+?>
