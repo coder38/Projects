@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->        
+    </global>
+
+    <formset>
+        <form name="LoginBean">
+            <field property="user" depends="required">
+                <arg key="user.msg"/>
+            </field>
+            <field property="pass" depends="required">
+                <arg key="pass.msg"/>
+            </field>
+        </form>
+
+        <form name="AdminLoginBean">
+            <field property="user" depends="required">
+                <arg key="user.msg"/>
+            </field>
+            <field property="pass" depends="required">
+                <arg key="pass.msg"/>
+            </field>
+        </form>
+        
+        <form name="RegistrationBean">
+            <field property="user" depends="required,mask">
+                <arg key="user.msg"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[a-zA-Z]*$</var-value>
+                </var>
+
+            </field>
+
+            <field property="pass" depends="required">
+                <arg key="pass.msg"/>
+            </field>
+
+            <field property="role" depends="required,mask">
+                <arg key="role.msg" />
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[a-zA-Z]*$</var-value>
+                </var>
+            </field>
+
+        <field property="sp" depends="required,mask">
+                <arg key="sp.msg" />
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[a-zA-Z]*$</var-value>
+                </var>
+            </field>
+
+        <field property="qual" depends="required,mask">
+                <arg key="qual.msg" />
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[a-zA-Z]*$</var-value>
+                </var>
+            </field>
+
+             <field property="loc" depends="required,mask">
+                <arg key="loc.msg" />
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[a-zA-Z]*$</var-value>
+                </var>
+            </field>
+
+ <field property="exp" depends="required,mask">
+                <arg key="exp.msg" />
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+
+            <field property="cont" depends="required,mask,minlength,maxlength">
+                <arg key="cont.msg" />
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+                <var>
+                    <var-name>minlength</var-name>
+                    <var-value>10</var-value>
+                </var>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>10</var-value>
+                </var>
+             </field>
+
+             <field property="pass" depends="required">
+                <arg key="pass.msg"/>
+            </field>
+
+            
+            <field property="privacy" depends="required">
+                <arg key="privacy.msg" />
+            </field>
+
+           </form>
+
+
+   </formset>
+
+</form-validation>
