@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="href://org.omg/UML/1.3" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="href://org.omg/UML/1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Model">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Namespace.ownedElement">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Model">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Namespace.ownedElement">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="Class">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Classifier.feature">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="Attribute">
+                                        <xs:complexType>
+                                          <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                          <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                                          <xs:attribute name="name" type="xs:string" use="required" />
+                                          <xs:attribute name="visibility" type="xs:string" use="required" />
+                                          <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                                          <xs:attribute name="ownerScope" type="xs:string" use="required" />
+                                          <xs:attribute name="changeability" type="xs:string" use="required" />
+                                          <xs:attribute name="targetScope" type="xs:string" use="required" />
+                                          <xs:attribute name="type" type="xs:string" use="required" />
+                                          <xs:attribute name="owner" type="xs:string" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="Operation">
+                                        <xs:complexType>
+                                          <xs:sequence minOccurs="0">
+                                            <xs:element name="BehavioralFeature.parameter">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element maxOccurs="unbounded" name="Parameter">
+                                                    <xs:complexType>
+                                                      <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                                      <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                                                      <xs:attribute name="name" type="xs:string" use="required" />
+                                                      <xs:attribute name="visibility" type="xs:string" use="required" />
+                                                      <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                                                      <xs:attribute name="kind" type="xs:string" use="required" />
+                                                      <xs:attribute name="behavioralFeature" type="xs:string" use="required" />
+                                                      <xs:attribute name="type" type="xs:string" use="required" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                          <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                                          <xs:attribute name="name" type="xs:string" use="required" />
+                                          <xs:attribute name="visibility" type="xs:string" use="required" />
+                                          <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                                          <xs:attribute name="ownerScope" type="xs:string" use="required" />
+                                          <xs:attribute name="isQuery" type="xs:boolean" use="required" />
+                                          <xs:attribute name="concurrency" type="xs:string" use="required" />
+                                          <xs:attribute name="isRoot" type="xs:boolean" use="required" />
+                                          <xs:attribute name="isLeaf" type="xs:boolean" use="required" />
+                                          <xs:attribute name="isAbstract" type="xs:boolean" use="required" />
+                                          <xs:attribute name="specification" type="xs:string" use="required" />
+                                          <xs:attribute name="owner" type="xs:string" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                              <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                              <xs:attribute name="name" type="xs:string" use="required" />
+                              <xs:attribute name="visibility" type="xs:string" use="required" />
+                              <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                              <xs:attribute name="namespace" type="xs:string" use="required" />
+                              <xs:attribute name="isRoot" type="xs:boolean" use="required" />
+                              <xs:attribute name="isLeaf" type="xs:boolean" use="required" />
+                              <xs:attribute name="isAbstract" type="xs:boolean" use="required" />
+                              <xs:attribute name="participant" type="xs:string" use="optional" />
+                              <xs:attribute name="isActive" type="xs:boolean" use="required" />
+                              <xs:attribute name="specialization" type="xs:string" use="optional" />
+                              <xs:attribute name="generalization" type="xs:string" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="Association">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Association.connection">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="AssociationEnd">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="AssociationEnd.multiplicity">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Multiplicity">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="Multiplicity.range">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="MultiplicityRange">
+                                                                <xs:complexType>
+                                                                  <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                                                  <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                                                                  <xs:attribute name="lower" type="xs:unsignedByte" use="required" />
+                                                                  <xs:attribute name="upper" type="xs:unsignedByte" use="required" />
+                                                                  <xs:attribute name="multiplicity" type="xs:string" use="required" />
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                      <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                                      <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                          <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                                          <xs:attribute name="name" type="xs:string" use="required" />
+                                          <xs:attribute name="visibility" type="xs:string" use="required" />
+                                          <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                                          <xs:attribute name="isNavigable" type="xs:boolean" use="required" />
+                                          <xs:attribute name="ordering" type="xs:string" use="required" />
+                                          <xs:attribute name="aggregation" type="xs:string" use="required" />
+                                          <xs:attribute name="targetScope" type="xs:string" use="required" />
+                                          <xs:attribute name="changeability" type="xs:string" use="required" />
+                                          <xs:attribute name="association" type="xs:string" use="required" />
+                                          <xs:attribute name="type" type="xs:string" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                              <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                              <xs:attribute name="name" type="xs:string" use="required" />
+                              <xs:attribute name="visibility" type="xs:string" use="required" />
+                              <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                              <xs:attribute name="namespace" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="Generalization">
+                            <xs:complexType>
+                              <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                              <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                              <xs:attribute name="name" type="xs:string" use="required" />
+                              <xs:attribute name="visibility" type="xs:string" use="required" />
+                              <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                              <xs:attribute name="namespace" type="xs:string" use="required" />
+                              <xs:attribute name="discriminator" type="xs:string" use="required" />
+                              <xs:attribute name="child" type="xs:string" use="required" />
+                              <xs:attribute name="parent" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Stereotype">
+                            <xs:complexType>
+                              <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                              <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                              <xs:attribute name="name" type="xs:string" use="required" />
+                              <xs:attribute name="extendedElement" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                  <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="visibility" type="xs:string" use="required" />
+                  <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                  <xs:attribute name="namespace" type="xs:string" use="required" />
+                  <xs:attribute name="isRoot" type="xs:boolean" use="required" />
+                  <xs:attribute name="isLeaf" type="xs:boolean" use="required" />
+                  <xs:attribute name="isAbstract" type="xs:boolean" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" name="DataType">
+                <xs:complexType>
+                  <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                  <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="visibility" type="xs:string" use="required" />
+                  <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                  <xs:attribute name="isRoot" type="xs:boolean" use="required" />
+                  <xs:attribute name="isLeaf" type="xs:boolean" use="required" />
+                  <xs:attribute name="isAbstract" type="xs:boolean" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="xmi.id" type="xs:string" use="required" />
+      <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TaggedValue">
+    <xs:complexType>
+      <xs:attribute name="xmi.id" type="xs:string" use="required" />
+      <xs:attribute name="xmi.uuid" type="xs:string" use="required" />
+      <xs:attribute name="tag" type="xs:string" use="required" />
+      <xs:attribute name="value" type="xs:string" use="required" />
+      <xs:attribute name="modelElement" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

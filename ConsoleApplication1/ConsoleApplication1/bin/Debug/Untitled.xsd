@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:UML="href://org.omg/UML/1.3" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="href://org.omg/UML/1.3" />
+  <xs:element name="XMI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="XMI.header">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="XMI.documentation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="XMI.owner" />
+                    <xs:element name="XMI.contact" />
+                    <xs:element name="XMI.exporter" type="xs:string" />
+                    <xs:element name="XMI.exporterVersion" type="xs:decimal" />
+                    <xs:element name="XMI.notice" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="XMI.metamodel">
+                <xs:complexType>
+                  <xs:attribute name="xmi.name" type="xs:string" use="required" />
+                  <xs:attribute name="xmi.version" type="xs:decimal" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="XMI.content">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="UML:Model" />
+              <xs:element maxOccurs="unbounded" ref="UML:TaggedValue" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="xmi.version" type="xs:decimal" use="required" />
+      <xs:attribute name="timestamp" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
