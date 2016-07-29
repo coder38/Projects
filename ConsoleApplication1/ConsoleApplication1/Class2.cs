@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Xml;
+using System.Xml.XPath;
 using System.Xml.Schema;
 using System.Linq;
 using System.Collections.Generic;
@@ -39,11 +40,11 @@ namespace ConsoleApplication1
                         case XmlNodeType.EndElement: //Display the end of the element.
                             Console.Write("</" + reader.Name);
                             Console.WriteLine(">");
-                           // Console.WriteLine();
+                            // Console.WriteLine();
                             break;
                     }
                 }
-                Console.WriteLine("getting attributes \n*************************************\n");
+                Console.WriteLine("\ngetting attributes- sample file*************************************\n");
 
                 XmlDocument x = new XmlDocument();
                 x.Load("test.xml");
@@ -53,32 +54,59 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine(elemList[i].InnerXml);
                 }
-            
+
                 x.Load("Untitled.xml");
                 Console.WriteLine(x);
-                XmlNodeList elemList2 = x.GetElementsByTagName("UML:Model");
-                for (int i = 0; i < elemList.Count; i++)
+                XmlNode root = x.DocumentElement;
+                //XmlElement root = x.DocumentElement;
+                Console.WriteLine(root.InnerText);
+                // Console.WriteLine(root.NextSibling);
+                if (root.HasChildNodes)
                 {
-                    Console.WriteLine(elemList2[i].InnerXml);
-                }
-                /* List<string> attributes = new List<string>();
+                    Console.WriteLine("Our xml- child nodes of root:");
+                    for (int i = 0; i < root.ChildNodes.Count; i++)
+                    {
+                        Console.WriteLine(" "+root.ChildNodes[i].Name);                
+                    }
+                    XmlNode childContent = root.LastChild;
+                    Console.WriteLine(" last child of root XMI: " + childContent.Name);
+                    Console.WriteLine("  first child of XMI:Content: "+childContent.FirstChild.Name);
+                    Console.WriteLine("   children in UML:Model");
+                    XmlNode childModel = childContent.FirstChild.FirstChild;
 
-                 List<XmlNode> nodes = new List<XmlNode>();
-                 XmlNode node = xml.FirstChild;
-                 foreach (XmlElement n in node.ChildNodes)
-                 {
-                     XmlAttributeCollection att = n.Attributes;
-                     foreach (XmlAttribute at in att)
+                    /* List<XmlNode> nodes = new List<XmlNode>();
+                     nodes.Add(root.LastChild);*/
+                     foreach (XmlElement n in childModel)
                      {
-                         if (at.LocalName.Contains("attribute"))
-                         {
-                             attributes.Add(at.Value);
-                         }
-                     }
-                 }*/
+                         Console.Write("     " + n.Name);
+                         if (n.HasAttribute("xmi.id"))
+                         {                             
+                            XmlAttribute elemList2 = n.GetAttributeNode("xmi.id");
+                            foreach (XmlText e in elemList2)
+                                Console.Write("  xmi:id= " + e.Value);
 
+                            XmlAttribute elemList3 = n.GetAttributeNode("name");
+                            foreach (XmlText e2 in elemList3)
+                                Console.Write("  name= " + e2.Value + "\n");                           
+                        }
+                     }
+                }                 
+                    /* List<string> attributes = new List<string>();
+                     List<XmlNode> nodes = new List<XmlNode>();
+                     XmlNode node = xml.FirstChild;
+                     foreach (XmlElement n in node.ChildNodes)
+                     {
+                         XmlAttributeCollection att = n.Attributes;
+                         foreach (XmlAttribute at in att)
+                         {
+                             if (at.LocalName.Contains("attribute"))
+                             {
+                                 attributes.Add(at.Value);
+                             }
+                         }
+                     }*/
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("exception: " + e);
             }
